@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "libffi",
+        "License": "MIT License",
+        "License File": "LICENSE",
+        "Version Number": "3.4.6",
+        "Owner": "francesco.pham1@h-partners.com",
+        "Upstream URL": "https://github.com/libffi/libffi",
+        "Description": "Portable foreign function interface library"
+    }
+]

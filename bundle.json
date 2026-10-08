@@ -1,0 +1,43 @@
+{
+    "name": "@ohos/libffi",
+    "description": "Third-party open-source software libffi | portable foreign function interface library.",
+    "version": "3.4.6",
+    "license": "MIT",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "third_party/libffi"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+        "name": "libffi",
+        "subsystem": "thirdparty",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [ "standard" ],
+        "rom": "",
+        "ram": "",
+        "deps": {
+            "components": [],
+            "third_party": []
+        },
+        "build": {
+            "sub_component": [
+                "//third_party/libffi:libffi"
+            ],
+            "inner_kits": [
+                {
+                    "header": {
+                        "header_base": "//third_party/libffi/include",
+                        "header_files": [
+                            "ffi.h",
+                            "ffitarget.h"
+                        ]
+                    },
+                    "name": "//third_party/libffi:libffi"
+                }
+            ],
+            "test": []
+        }
+    }
+}

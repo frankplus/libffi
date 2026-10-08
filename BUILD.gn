@@ -1,0 +1,47 @@
+# Copyright (C) 2026 Oniro / Hybris Generic.
+# Licensed under the Apache License, Version 2.0.
+#
+# libffi 3.4.6, vendored for the Waydroid display bridge
+# (docs/hybris_generic/android_app_compat_plan.md §W1).  aarch64-only:
+# fficonfig.h / ffi.h / ffitarget.h are the configure outputs for
+# aarch64-linux-ohos (musl); regeneration recipe in README.OpenSource.
+
+import("//build/ohos.gni")
+
+config("libffi_config") {
+  include_dirs = [ "include" ]
+}
+
+config("libffi_private_config") {
+  include_dirs = [
+    ".",
+    "include",
+    "src/aarch64",
+  ]
+  cflags = [
+    "-DHAVE_CONFIG_H",
+    "-Wno-unused-variable",
+    "-Wno-deprecated-declarations",
+    "-Wno-incompatible-pointer-types",
+  ]
+}
+
+ohos_shared_library("libffi") {
+  sources = [
+    "src/aarch64/ffi.c",
+    "src/aarch64/sysv.S",
+    "src/closures.c",
+    "src/debug.c",
+    "src/java_raw_api.c",
+    "src/prep_cif.c",
+    "src/raw_api.c",
+    "src/tramp.c",
+    "src/types.c",
+  ]
+  configs = [ ":libffi_private_config" ]
+  public_configs = [ ":libffi_config" ]
+
+  install_enable = true
+  part_name = "libffi"
+  subsystem_name = "thirdparty"
+}
